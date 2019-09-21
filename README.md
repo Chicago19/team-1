@@ -8,4 +8,5 @@ Navigation
 npm install react-router-native
 PDF
 PDF
+PDF
 npm install react-native-view-pdf --save
