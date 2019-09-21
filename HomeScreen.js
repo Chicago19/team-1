@@ -43,7 +43,7 @@ export default class HomeScreen extends React.Component {
             radius: 15}
         // const { width, height } = this.state.window;
         var { height, width } = Dimensions.get('window');
-        if (width < 400) {
+        if (width < 450) {
             btn1Attr.height = 60;
             btn1Attr.width = width;
             btn1Attr.right = 0;
