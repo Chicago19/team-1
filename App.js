@@ -136,6 +136,12 @@ class Game extends React.Component {
             movePlayerVal: new Animated.Value(40),
                 playerSide: 'left',
                 points: 0,
+                moveEnemyval: new Animated.Value(0);
+                enemyStartposX: 0 
+                enemySide: 'left',
+                enemySpeed: 4300,
+
+                gameOver: false,
         };
     }
     render () {
@@ -162,6 +168,9 @@ class Game extends React.Component {
                             ]
                         }}
                         />
+                        <Enemy enemyImg={require('./assets/flowers.jpg')}
+                        enemyStartposX={this.state.enemtStartposX}
+                        moveEnemyval={this.state.moveEnemyVal}
 
                         <View style={styles.controls}>
                             <Text style={styles.left} onPress={() => this.movePlayer('left')}>{'<'}</Text>
@@ -199,7 +208,86 @@ class Game extends React.Component {
 
         }
     }
+    componentDidMount(){
+        this.animateEnemy();
+
+
+    }
+    animateEnemy(){
+        this.state.moveEnemyval.setValue(-100);
+        var windhowH = Dimenstions.get('width').height;
+        var r = Math.floor(Math.random()* 2) + 1; 
+
+        if (r==2){
+            r = 40;
+            this.setState({ enemySide: 'left' });
+        } else {
+            r = Dimensions.get('window').width - 140;
+            this.setState({ enemySide: 'right' });
+        }
+        this.setState({ enemyStartposX r });
+
+        var refreshIntervalvalId;
+        refreshIntervalId = setInterval (() => {
+        
+        if (this.state.moveEnemyval.value > windhowH - 280 
+            && this.state.moveEnemyval._value < windowH - 180
+            && this.state.playerSide == this.state.enemySide ){
+                
+                clearInterval(refreshIntervalid)
+                this.setState({ gameOver: true});
+                this.gameOver();
+
+            } 
+        },50); 
+
+        setInterval(() => {
+            this.setState({ enemySpeed: this.state.enemySpeed - 50 })
+        }, 2000); 
+
+        Animated.timing(
+            this.state.moveEnemyval, 
+            {
+                toValue: Dimensions.get('window').height,
+                duration: this.state.enemySpeed,
+            }
+        ).start(event => {
+            if(event.finished && this.state.gameOver == false ) {
+                
+                clearInterval(refreshIntervalId);
+                this.setState({ points: ++this.state.points })
+                this.animateEnemy(); 
+            }
+        });
+
+    }
+
+    gameOver() {
+        alert('Try again next time!');
+    }
+        
+    
 }
+
+export default class Enemy extends Component {
+
+    render(){
+        return (
+            <Animated.Image source={this.props.flowers.jpg}
+                style={{
+                height: 100,
+                width: 100,
+                position: 'absolute',
+                reasizeMode: 'stretch',
+                left: this.props.enemyStartposX,
+                transform: [
+                    { translateY: this.UNSAFE_componentWillMount.props.moveEnemyval },
+
+                ]
+            }}></Animated.Image> 
+        );
+    }
+    } 
 
 const styles = StyleSheet.create({
     container: {
