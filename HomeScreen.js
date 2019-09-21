@@ -5,6 +5,8 @@ import { Button } from 'react-native-elements';
 import { Icon } from 'react-native-elements'
 import { LinearGradient } from 'expo-linear-gradient'
 
+console.disableYellowBox = true;
+
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Home',

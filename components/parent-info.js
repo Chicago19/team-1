@@ -15,8 +15,9 @@ const styles = StyleSheet.create({
 
 function renderDocuments(navigate, documents) {
 
-    const render = (doc) => ( <Button 
-                                title={doc.name} 
+    const render = (doc, index) => ( <Button
+                                key={index.toString()}
+                                title={doc.name}
                                 type={"solid"}
                                 style={{padding: 15,alignItems: 'center',}}
                                 buttonStyle={{
