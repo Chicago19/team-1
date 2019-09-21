@@ -43,7 +43,7 @@ export default class HomeScreen extends React.Component {
             radius: 15}
         // const { width, height } = this.state.window;
         var { height, width } = Dimensions.get('window');
-        if (width < 450) {
+        if (width < 650) {
             btn1Attr.height = 60;
             btn1Attr.width = width;
             btn1Attr.right = 0;
@@ -111,7 +111,8 @@ export default class HomeScreen extends React.Component {
                             top: btn2Attr.top,
                             backgroundColor: '#81539E',
                             borderRadius: btn2Attr.radius,
-                            elevation: 10
+                            elevation: 10,
+                            marginBottom: 10
                         }}
                         onPress={() => navigate('Children')}
                     />
