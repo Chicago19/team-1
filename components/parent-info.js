@@ -15,8 +15,9 @@ const styles = StyleSheet.create({
 
 function renderDocuments(navigate, documents) {
 
-    const render = (doc) => ( <Button 
-                                title={doc.name} 
+    const render = (doc, index) => ( <Button
+                                key={index.toString()}
+                                title={index.toString() + " " + doc.name}
                                 // raised={true}
                                 type={"solid"}
                                 // linearGradientProps={{
