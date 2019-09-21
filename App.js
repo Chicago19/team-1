@@ -102,7 +102,7 @@ class ChildrensScreen extends React.Component {
             style={{flex: 1}}
             >
             <View style={styles.container}>
-                <Image source={require('./assets/ccaclogotransparent.png')} style={{width: 400, height: 300}}/>
+                <Image source={require('./assets/caclogotransparent.png')} style={{width: 400, height: 300}}/>
                 <Button
                     title="Play Game!"
                     color="#fff"
