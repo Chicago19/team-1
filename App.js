@@ -101,6 +101,7 @@ class ChildrensScreen extends React.Component {
             style={{flex: 1}}
             >
             <View style={styles.container}>
+                <Image source={require('./assets/ccaclogotransparent.png')} style={{width: 400, height: 300}}/>
                 <Button
                     title="Play Game!"
                     color="#fff"
@@ -108,10 +109,9 @@ class ChildrensScreen extends React.Component {
                         fontSize: 50,
                         fontFamily: 'Helvetica'
                     }}
-                    buttonStyle={{height: 100, width: 300, left: 200, top: 100, backgroundColor: '#81539E', borderRadius: 25}}
+                    buttonStyle={{height: 100, width: 300, backgroundColor: '#81539E', borderRadius: 25}}
                     onPress={() => navigate('Game')}
                 />
-                <Image source={require('./assets/ccaclogotransparent.png')} style={{width: 400, height: 300}}/>
                 <Image source={require('./assets/AngryBirdsSpace.png')} style={{width:120, height: 120, right:220, top:210}}/>
                 <Image source={require('./assets/BadPiggies.png')} style={{width:100, height: 100, right:110, top:100}}/>
                 <Image source={require('./assets/Pitfall.jpg')} style={{width:100, height: 100}}/>
@@ -146,13 +146,13 @@ class Game extends React.Component {
             >
                 <ImageBackground source={require('./assets/game.png')} style={styles.container}>
                     <View style={{ flex: 1, alignItems: 'center', marginTop: 80}}>
-                        <View style={styles.points}>
-                            <Text style={{ fontWight: 'bold', fontSize: 40}}>{this.state.points}></Text>
-                        </View>
+                        {/* <View style={styles.points}>
+                            <Text style={{ fontWeight: 'bold', fontSize: 40}}>{this.state.points}</Text>
+                        </View> */}
                         <Animated.Image source={require('./assets/butterfly.png')}
                         style={{
-                            height:100,
-                            width:100,
+                            height:200,
+                            width:200,
                             position: 'absolute',
                             zIndex: 1,
                             bottom: 50,
@@ -165,7 +165,7 @@ class Game extends React.Component {
 
                         <View style={styles.controls}>
                             <Text style={styles.left} onPress={() => this.movePlayer('left')}>{'<'}</Text>
-                            <Text style={styles.right}onPress={() => this.movePlayer('right')}>{'>'}</Text>                       
+                            <Text style={styles.right} onPress={() => this.movePlayer('right')}>{'>'}</Text>                       
                         </View>
                     </View>
                 </ImageBackground>
@@ -181,8 +181,8 @@ class Game extends React.Component {
             Animated.spring(
                 this.state.movePlayerVal,
                 {
-                    toValue: Dimensions.get('window').width = 140,
-                    tension: 120,
+                    toValue: 200,
+                    tension: 20,
                 } 
             ).start();
 
@@ -192,8 +192,8 @@ class Game extends React.Component {
             Animated.spring(
                 this.state.movePlayerVal,
                 {
-                    toValue: Dimensions.get('window').width = 140,
-                    tension: 120,
+                    toValue: -200,
+                    tension: 20,
                 } 
             ).start();
 
@@ -224,6 +224,7 @@ const styles = StyleSheet.create({
         flex: 1,
         color: '#81539E',
         margin: 0,
+        left: 200,
         fontSize: 60,
         fontWeight: 'bold',
         textAlign: 'left'
@@ -232,6 +233,7 @@ const styles = StyleSheet.create({
         flex: 1,
         color: '#81539E',
         margin: 0,
+        right: 200,
         fontSize: 60,
         fontWeight: 'bold',
         textAlign: 'right'
