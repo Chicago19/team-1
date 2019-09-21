@@ -69,6 +69,24 @@ class ChildrensScreen extends React.Component {
     }
 }
 
+class Enemy extends Component {
+    render(){
+        return (
+            <Animated.Image source={this.props.enemyImg}
+                style={{
+                height: 100,
+                width: 100,
+                position: 'absolute',
+                resizeMode: 'stretch',
+                left: this.props.enemyStartposX,
+                transform: [
+                    { translateY: this.props.moveEnemyval},
+                ]
+            }}></Animated.Image> 
+        );
+    }
+} 
+
 class Game extends React.Component {
     static navigationOptions = {
         title: 'Game',
@@ -82,6 +100,12 @@ class Game extends React.Component {
             movePlayerVal: new Animated.Value(40),
                 playerSide: 'left',
                 points: 0,
+                moveEnemyval: new Animated.Value(0),
+                enemyStartposX: 0,
+                enemySide: 'left',
+                enemySpeed: 4200,
+
+                gameOver: false,
         };
     }
     render () {
@@ -92,9 +116,9 @@ class Game extends React.Component {
             >
                 <ImageBackground source={require('./assets/game.png')} style={styles.container}>
                     <View style={{ flex: 1, alignItems: 'center', marginTop: 80}}>
-                        {/* <View style={styles.points}>
+                        <View style={styles.points}>
                             <Text style={{ fontWeight: 'bold', fontSize: 40}}>{this.state.points}</Text>
-                        </View> */}
+                        </View>
                         <Animated.Image source={require('./assets/butterfly.png')}
                         style={{
                             height:200,
@@ -106,7 +130,11 @@ class Game extends React.Component {
                             transform:[
                                 { translateX: this.state.movePlayerVal}
                             ]
-                        }}
+                        }}></Animated.Image>
+
+                        <Enemy enemyImg={require('./assets/Frog.png')}
+                        enemyStartposX={this.state.enemyStartposX}
+                        moveEnemyval={this.state.moveEnemyval}
                         />
 
                         <View style={styles.controls}>
@@ -145,6 +173,63 @@ class Game extends React.Component {
 
         }
     }
+    componentDidMount(){
+        this.animateEnemy();
+    }
+    animateEnemy(){
+        this.state.moveEnemyval.setValue(-100);
+        var windhowH = Dimensions.get('window').height;
+        var r = Math.floor(Math.random()* 2) + 1; 
+
+        if (r==2){
+            r = 40;
+            this.setState({ enemySide: 'left' });
+        } else {
+            r = Dimensions.get('window').width - 140;
+            this.setState({ enemySide: 'right' });
+        }
+        this.setState({ enemyStartposX:r });
+
+        var refreshIntervalvalId;
+        refreshIntervalId = setInterval (() => {
+        
+        if (this.state.moveEnemyval.value > windhowH - 280 
+            && this.state.moveEnemyval._value < windowH - 180
+            && this.state.playerSide == this.state.enemySide ){
+                
+                clearInterval(refreshIntervalid)
+                this.setState({ gameOver: true});
+                this.gameOver();
+
+            } 
+        },50); 
+
+        setInterval(() => {
+            this.setState({ enemySpeed: this.state.enemySpeed - 50 })
+        }, 2000); 
+
+        Animated.timing(
+            this.state.moveEnemyval, 
+            {
+                toValue: Dimensions.get('window').height,
+                duration: this.state.enemySpeed,
+            }
+        ).start(event => {
+            if(event.finished && this.state.gameOver == false ) {
+                
+                clearInterval(refreshIntervalId);
+                this.setState({ points: ++this.state.points })
+                this.animateEnemy(); 
+            }
+        });
+
+    }
+
+    gameOver() {
+        Alert('Try again next time!');
+    }
+        
+    
 }
 
 const styles = StyleSheet.create({
