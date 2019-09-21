@@ -28,14 +28,22 @@ class HomeScreen extends React.Component {
                 <Button
                     title="Parents"
                     color="#fff"
-                    buttonStyle={{height: 100, width: 300, right: 200, top: 200, backgroundColor: '#81539E'}}
-                    onPress={() => navigate('Parents', { name: 'Jane' })}
+                    titleStyle={{
+                        fontSize: 50,
+                        fontFamily: 'Helvetica'
+                    }}
+                    buttonStyle={{height: 100, width: 300, right: 200, top: 200, backgroundColor: '#81539E', borderRadius: 25}}
+                    onPress={() => navigate('Parents')}
                 />
                 <Button
                     title="Children"
                     color="#fff"
-                    buttonStyle={{height: 100, width: 300, left: 200, top: 100, backgroundColor: '#81539E'}}
-                    onPress={() => Alert.alert('You picked children!')}
+                    titleStyle={{
+                        fontSize: 50,
+                        fontFamily: 'Helvetica'
+                    }}
+                    buttonStyle={{height: 100, width: 300, left: 200, top: 100, backgroundColor: '#81539E', borderRadius: 25}}
+                    onPress={() => navigate('Children')}
                 />
                 <Button
                 icon={
@@ -77,6 +85,32 @@ class ParentsScreen extends React.Component {
     }
 }
 
+class ChildrensScreen extends React.Component {
+    static navigationOptions = {
+        title: 'Children',
+        headerStyle: {
+            backgroundColor: '#b55eae',
+          },
+    };
+    render() {
+        const { navigate } = this.props.navigation;
+        return (
+            <LinearGradient
+            colors={['#b55eae', '#00d4ff']}
+            style={{flex: 1}}
+            >
+            <View style={styles.container}>
+                <Image source={require('./assets/ccaclogotransparent.png')} style={{width: 400, height: 300}}/>
+                <Image source={require('./assets/AngryBirdsSpace.jpg')} style={{width:100, height: 100}}/>
+                <Image source={require('./assets/BadPiggies.png')} style={{width:100, height: 100}}/>
+                <Image source={require('./assets/Pitfall.jpg')} style={{width:100, height: 100}}/>
+                <Image source={require('./assets/GeometryDash.png')} style={{width:100, height: 100}}/>
+            </View>
+            </LinearGradient>
+        );
+    }
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -88,6 +122,7 @@ const styles = StyleSheet.create({
 const MainNavigator = createStackNavigator({
     Home: { screen: HomeScreen },
     Parents: { screen: ParentsScreen },
+    Children: { screen: ChildrensScreen }
 });
 
 const App = createAppContainer(MainNavigator);
