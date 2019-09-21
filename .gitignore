@@ -102,5 +102,4 @@ public
 # DynamoDB Local files
 .dynamodb/
 
-package.json
 package-lock.json
