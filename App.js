@@ -30,11 +30,11 @@ class HomeScreen extends React.Component {
                 <Button
                     title="Parents"
                     color="#fff"
-                    raised={true}
+                    // raised={true}
                     // type="outline"
                     titleStyle={{
                         fontSize: 50,
-                        fontFamily: 'Helvetica'
+                        // fontFamily: 'Helvetica'
                     }}
                         buttonStyle={{ 
                             height: 100, 
@@ -43,16 +43,17 @@ class HomeScreen extends React.Component {
                             top: 200, 
                             backgroundColor: '#81539E', 
                             borderRadius: 15, 
+                            elevation: 10
                             }}
                     onPress={() => navigate('Parents')}
                 />
                 <Button
                     title="Children"
                     color="#fff"
-                    raised={true}
+                    // raised={true}
                     titleStyle={{
                         fontSize: 50,
-                        fontFamily: 'Helvetica'
+                        // fontFamily: 'Helvetica'
                     }}
                         buttonStyle={{ 
                             height: 100, 
@@ -61,6 +62,7 @@ class HomeScreen extends React.Component {
                             top: 100, 
                             backgroundColor: '#81539E', 
                             borderRadius: 15, 
+                            elevation: 10
                             }}
                     onPress={() => navigate('Children')}
                 />
