@@ -17,21 +17,13 @@ function renderDocuments(navigate, documents) {
 
     const render = (doc) => ( <Button 
                                 title={doc.name} 
-                                // raised={true}
                                 type={"solid"}
-                                // linearGradientProps={{
-                                //     colors: ['red', 'pink'],
-                                //     start: { x: 0, y: 0.5 },
-                                //     end: { x: 1, y: 0.5 },
-                                // }}
+                                style={{padding: 15,alignItems: 'center',}}
                                 buttonStyle={{
                                     height: 100,
                                     width: 300,
-                                    left: 0,
-                                    top: 0,
-                                    // backgroundColor: '#81539E',
+                                    backgroundColor: '#81539E',
                                     borderRadius: 15,
-                                    elevation: 10
                                 }}
                                 onPress={() => navigate('ViewPdf', { file: doc.file })}
                                 />);
