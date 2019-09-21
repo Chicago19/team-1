@@ -17,7 +17,7 @@ function renderDocuments(navigate, documents) {
 
     const render = (doc, index) => ( <Button
                                 key={index.toString()}
-                                title={index.toString() + " " + doc.name}
+                                title={doc.name}
                                 // raised={true}
                                 type={"solid"}
                                 // linearGradientProps={{
