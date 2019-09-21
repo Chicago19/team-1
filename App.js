@@ -124,6 +124,24 @@ class ChildrensScreen extends React.Component {
     }
 }
 
+class Enemy extends Component {
+    render(){
+        return (
+            <Animated.Image source={this.props.enemyImg}
+                style={{
+                height: 100,
+                width: 100,
+                position: 'absolute',
+                resizeMode: 'stretch',
+                left: this.props.enemyStartposX,
+                transform: [
+                    { translateY: this.props.moveEnemyval},
+                ]
+            }}></Animated.Image> 
+        );
+    }
+} 
+
 class Game extends React.Component {
     static navigationOptions = {
         title: 'Game',
@@ -137,10 +155,10 @@ class Game extends React.Component {
             movePlayerVal: new Animated.Value(40),
                 playerSide: 'left',
                 points: 0,
-                moveEnemyval: new Animated.Value(0);
-                enemyStartposX: 0 
+                moveEnemyval: new Animated.Value(0),
+                enemyStartposX: 0,
                 enemySide: 'left',
-                enemySpeed: 4300,
+                enemySpeed: 4200,
 
                 gameOver: false,
         };
@@ -153,9 +171,9 @@ class Game extends React.Component {
             >
                 <ImageBackground source={require('./assets/game.png')} style={styles.container}>
                     <View style={{ flex: 1, alignItems: 'center', marginTop: 80}}>
-                        {/* <View style={styles.points}>
+                        <View style={styles.points}>
                             <Text style={{ fontWeight: 'bold', fontSize: 40}}>{this.state.points}</Text>
-                        </View> */}
+                        </View>
                         <Animated.Image source={require('./assets/butterfly.png')}
                         style={{
                             height:200,
@@ -167,11 +185,12 @@ class Game extends React.Component {
                             transform:[
                                 { translateX: this.state.movePlayerVal}
                             ]
-                        }}
-                        />
+                        }}></Animated.Image>
+
                         <Enemy enemyImg={require('./assets/flowers.jpg')}
-                        enemyStartposX={this.state.enemtStartposX}
-                        moveEnemyval={this.state.moveEnemyVal}
+                        enemyStartposX={this.state.enemyStartposX}
+                        moveEnemyval={this.state.moveEnemyval}
+                        />
 
                         <View style={styles.controls}>
                             <Text style={styles.left} onPress={() => this.movePlayer('left')}>{'<'}</Text>
@@ -211,12 +230,10 @@ class Game extends React.Component {
     }
     componentDidMount(){
         this.animateEnemy();
-
-
     }
     animateEnemy(){
         this.state.moveEnemyval.setValue(-100);
-        var windhowH = Dimenstions.get('width').height;
+        var windhowH = Dimensions.get('window').height;
         var r = Math.floor(Math.random()* 2) + 1; 
 
         if (r==2){
@@ -226,7 +243,7 @@ class Game extends React.Component {
             r = Dimensions.get('window').width - 140;
             this.setState({ enemySide: 'right' });
         }
-        this.setState({ enemyStartposX r });
+        this.setState({ enemyStartposX:r });
 
         var refreshIntervalvalId;
         refreshIntervalId = setInterval (() => {
@@ -264,31 +281,11 @@ class Game extends React.Component {
     }
 
     gameOver() {
-        alert('Try again next time!');
+        Alert('Try again next time!');
     }
         
     
 }
-
-export default class Enemy extends Component {
-
-    render(){
-        return (
-            <Animated.Image source={this.props.flowers.jpg}
-                style={{
-                height: 100,
-                width: 100,
-                position: 'absolute',
-                reasizeMode: 'stretch',
-                left: this.props.enemyStartposX,
-                transform: [
-                    { translateY: this.UNSAFE_componentWillMount.props.moveEnemyval },
-
-                ]
-            }}></Animated.Image> 
-        );
-    }
-    } 
 
 const styles = StyleSheet.create({
     container: {
