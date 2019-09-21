@@ -9,6 +9,9 @@ import { LinearGradient } from 'expo-linear-gradient'
 class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Home',
+        headerStyle: {
+            backgroundColor: '#b55eae',
+          },
     };
     render() {
 
@@ -54,6 +57,9 @@ class HomeScreen extends React.Component {
 class ParentsScreen extends React.Component {
     static navigationOptions = {
         title: 'Parents',
+        headerStyle: {
+            backgroundColor: '#b55eae',
+          },
     };
     render() {
         const { navigate } = this.props.navigation;
