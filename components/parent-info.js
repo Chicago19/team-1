@@ -1,7 +1,8 @@
 import React from 'react';
 import {LinearGradient} from "expo-linear-gradient";
-import {Button, Image, StyleSheet, View} from "react-native";
+import {Image, StyleSheet, View} from "react-native";
 import PdfRendering from "./pdf-rendering";
+import { Button } from 'react-native-elements';
 
 
 const styles = StyleSheet.create({
@@ -14,7 +15,10 @@ const styles = StyleSheet.create({
 
 function renderDocuments(navigate, documents) {
 
-    const render = (doc) => (<Button title={doc.name} onPress={() => navigate('ViewPdf', { file: doc.file })}/>);
+    const render = (doc) => ( <Button 
+                                title={doc.name} 
+                                onPress={() => navigate('ViewPdf', { file: doc.file })}
+                                />);
 
     return (<React.Fragment>
         {documents.map(render)}
