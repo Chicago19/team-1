@@ -5,6 +5,7 @@ import { StyleSheet, View, Image, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Icon } from 'react-native-elements'
 import { LinearGradient } from 'expo-linear-gradient'
+import ParentInfo, {ViewPdf} from "./components/parent-info";
 
 class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -122,8 +123,9 @@ const styles = StyleSheet.create({
 
 const MainNavigator = createStackNavigator({
     Home: { screen: HomeScreen },
-    Parents: { screen: ParentsScreen },
-    Children: { screen: ChildrensScreen }
+    Parents: { screen: ParentInfo },
+    ViewPdf: { screen: ViewPdf },
+    Children: { screen: ChildrensScreen },
 });
 
 const App = createAppContainer(MainNavigator);
