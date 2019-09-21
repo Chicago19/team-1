@@ -10,4 +10,5 @@ PDF
 PDF
 PDF
 PDF
+PDF
 npm install react-native-view-pdf --save
