@@ -3,8 +3,9 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import {StyleSheet, View, Image, Alert, AppRegistry, Dimensions, Animated, Text, ImageBackground} from 'react-native';
 import { Button } from 'react-native-elements';
-import { Icon } from 'react-native-elements';
-import { LinearGradient } from 'expo-linear-gradient';
+import { Icon } from 'react-native-elements'
+import { LinearGradient } from 'expo-linear-gradient'
+import ParentInfo, {ViewPdf} from "./components/parent-info";
 
 
 class HomeScreen extends React.Component {
@@ -101,7 +102,7 @@ class ChildrensScreen extends React.Component {
             style={{flex: 1}}
             >
             <View style={styles.container}>
-                <Image source={require('./assets/ccaclogotransparent.png')} style={{width: 400, height: 300}}/>
+                <Image source={require('./assets/caclogotransparent.png')} style={{width: 400, height: 300}}/>
                 <Button
                     title="Play Game!"
                     color="#fff"
@@ -330,7 +331,8 @@ const styles = StyleSheet.create({
 
 const MainNavigator = createStackNavigator({
     Home: { screen: HomeScreen },
-    Parents: { screen: ParentsScreen },
+    Parents: { screen: ParentInfo },
+    ViewPdf: { screen: ViewPdf },
     Children: { screen: ChildrensScreen },
     Game: {screen: Game}
 });
