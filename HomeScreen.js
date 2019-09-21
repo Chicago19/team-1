@@ -38,7 +38,7 @@ export default class HomeScreen extends React.Component {
             height: 100,
             width: 300,
             left: 200,
-            top: 100,
+            top: 90,
             fontSize: 50,
             radius: 15}
         // const { width, height } = this.state.window;
