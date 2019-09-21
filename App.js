@@ -187,7 +187,7 @@ class Game extends React.Component {
                             ]
                         }}></Animated.Image>
 
-                        <Enemy enemyImg={require('./assets/flowers.jpg')}
+                        <Enemy enemyImg={require('./assets/Frog.png')}
                         enemyStartposX={this.state.enemyStartposX}
                         moveEnemyval={this.state.moveEnemyval}
                         />
