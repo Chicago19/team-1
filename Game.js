@@ -1,11 +1,5 @@
 import React, {Component} from 'react';
-import {
-AppRegistry, 
-StyleSheet,
-Text,
-View,
-Dimensions,
-Animated
+import {AppRegistry, StyleSheet,Text,View,Dimensions,Animated
 } from 'react-native';
 
 export default class Game extends Component {
@@ -23,9 +17,9 @@ export default class Game extends Component {
             <Image source={require('./assests/game.png')} style={style.containet}>
             
             <View style={{ flex: 1, alignItems: 'center', marginTop: 80}}
-                <View style={styles.points}>
+                <View style={{styles.points}}>
                     <Text style={{ fontWight: 'bold', fontSize: 40}}>{this.state.points}></Text>
-            </View>
+                </View>
                 <Animated.Image source={require('./assests/butterfly.png')}
                 style={{
                     height:100,
@@ -37,7 +31,8 @@ export default class Game extends Component {
                     transform:[
                         { translateX: this.is.state.movePlayerVal}
                     ]
-                }}<>/Animated.Image>
+                }}
+                />
 
                 <View style={styles.controls}>
                     <Text style={styles.left} onPress={() => this.movePlayer('left')}>{'<'}</Text>
@@ -52,7 +47,7 @@ export default class Game extends Component {
     }
     movePlayer(direction){
    
-        if (direction == 'right) {
+        if (direction == 'right') {
             this.setState({ playerSide: 'right' });
 
             Animated.spring(
