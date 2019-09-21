@@ -101,10 +101,11 @@ class ChildrensScreen extends React.Component {
             >
             <View style={styles.container}>
                 <Image source={require('./assets/ccaclogotransparent.png')} style={{width: 400, height: 300}}/>
-                <Image source={require('./assets/AngryBirdsSpace.jpg')} style={{width:100, height: 100}}/>
-                <Image source={require('./assets/BadPiggies.png')} style={{width:100, height: 100}}/>
+                <Image source={require('./assets/AngryBirdsSpace.png')} style={{width:120, height: 120, right:220, top:210}}/>
+                <Image source={require('./assets/BadPiggies.png')} style={{width:100, height: 100, right:110, top:100}}/>
                 <Image source={require('./assets/Pitfall.jpg')} style={{width:100, height: 100}}/>
-                <Image source={require('./assets/GeometryDash.png')} style={{width:100, height: 100}}/>
+                <Image source={require('./assets/GeometryDash.png')} style={{width:100, height: 100, left:110, bottom:100}}/>
+                <Image source={require('./assets/SubwaySurfers.jpg')} style={{width:100, height: 100, left:220, bottom:200}}/>
             </View>
             </LinearGradient>
         );
