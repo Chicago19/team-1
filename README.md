@@ -1,5 +1,5 @@
 # Team-1 CCAC Kiosk App
-![](home.png) 
+![Homepage](home.PNG) 
 ## Getting Started
 ### Prerequisites
 This application was written in React Native with Expo. To get started with these programs, first install the latest NodeJS version. The application can be run on an emulator on your computer, or can be run by downloading the Expo app on the App Store or Google Play. The app is compatible with both Android and IOS devices. 
