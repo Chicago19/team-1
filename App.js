@@ -53,7 +53,6 @@ class ChildrensScreen extends React.Component {
                     color="#fff"
                     titleStyle={{
                         fontSize: 50,
-                        fontFamily: 'Helvetica'
                     }}
                     buttonStyle={{height: 100, width: 300, backgroundColor: '#81539E', borderRadius: 25}}
                     onPress={() => navigate('Game')}
